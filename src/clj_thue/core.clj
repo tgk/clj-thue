@@ -11,8 +11,9 @@
 
 (defn gather-rules
   [thue]
-  (for [r (filter #(= :R (first %)) thue)]
-    (let [[_R left right] r] [left right])))
+  (->> thue
+       (filter #(= :R (first %)))
+       (map rest)))
 
 (defn replace-first
   [target pattern replacement]
