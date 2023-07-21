@@ -18,7 +18,7 @@ _1111111111_")
 
 (deftest thue-parser-test
   (testing "Parses basic program"
-    (is (= [:S [:R "a" "HelloWorld"] [:T] [:I "a"]]
+    (is (= [[:R "a" "HelloWorld"] [:T] [:I "a"]]
            (sut/thue-parser hello-world)))))
 
 (deftest gather-rules-test
