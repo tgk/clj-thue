@@ -5,14 +5,14 @@
   (insta/parser
     "S = R* T I
      R = V <'::='> V <'\n'>
-     V = #'[A-Za-z0-9_\\+]+'
+     <V> = #'[A-Za-z0-9_\\+]+'
      I = #'[A-Za-z0-9_\\+]+'
      T = <'::=\n'>"))
 
 (defn gather-rules
   [thue]
   (for [r (filter #(= :R (first %)) (rest thue))]
-    (let [[_V left right] r] [(second left) (second right)])))
+    (let [[_R left right] r] [left right])))
 
 (defn replace-first
   [target pattern replacement]
