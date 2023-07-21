@@ -25,10 +25,10 @@
 
 (defn apply-rule
   [rules value]
-  (first
-   (filter identity
-           (for [[pattern replacement] rules]
-             (replace-first value pattern replacement)))))
+  (->> rules
+       (map (partial apply replace-first value))
+       (filter identity)
+       first))
 
 (defn interpret
   [thue]
